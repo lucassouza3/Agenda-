@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from time import strftime
 # Create your models here.
 
 class Evento(models.Model): #Entidade Evento // Tabela Evento
@@ -12,3 +13,5 @@ class Evento(models.Model): #Entidade Evento // Tabela Evento
         db_table = 'Evento'
     def __str__(self):
         return self.titulo
+    def get_data_evento(self):
+        return self.data_evento.strftime('criado em: %d/%m/%Y às %H:%M')
