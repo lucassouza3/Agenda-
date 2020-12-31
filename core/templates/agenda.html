@@ -3,7 +3,19 @@
 <h2>Agendamentos</h2>    
 
     <ul style="font-size: 18px">
-        <li>{{ evento.titulo }} - {{ evento.get_data_evento }}</li>
+        {%for eventos in evento%}
+            
+            <li>
+                <div style={% if evento.get_evento_atrasado %} 
+                "color:red"
+                {% endif %}
+                    {{evento.id}} - {{evento.titulo}} - {{evento.data_evento}}
+                    (<a href="evento/?id={{evento.id}}">Editar</a>
+                    / <a href="evento/delete/{{evento.id}}/">Excluir</a>)
+                </div>
+            </li>
+        {%endfor%}
+        
     </ul>
 <a href="evento">
     <button type="button">Novo Evento</button>
